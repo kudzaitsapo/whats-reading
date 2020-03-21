@@ -20,6 +20,7 @@ class botController extends Controller
           $message = "There was an error: ".$error->getMessage();
           $this->sendWhatsAppMessage($message, $from);
         }
+        return;
 
     }
 
