@@ -44,7 +44,7 @@ class botController extends Controller
         $message = "";
         if ($user)
         {
-            $message = "You're registered. Congratulations, you can read!";
+            $message = "You're already registered. Congratulations, you can read!";
         }else
         {
             if (strtolower($command_array[0]) == 'reg')
