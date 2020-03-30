@@ -39,12 +39,23 @@ class botController extends Controller
     {
         $user = User::where('phone', $phone)->first();
         $command_array = explode(' ', $command);
-        $action = '';
-        $params = array();
         $message = "";
         if ($user)
         {
-            $message = "You're already registered. Congratulations, you can read!";
+            if (strtolower($command_array[0]) != 'reg')
+            {
+                if ($command_array[0] != '+' || $command_array[0] != '#')
+                {
+                    
+                }else
+                {
+                    $message = "Adding novels and commenting are not yet supported. Please wait until we are finished ";
+                }
+                
+            }else
+            {
+                $message = $this->getHelp(true);
+            }
         }else
         {
             if (strtolower($command_array[0]) == 'reg')
@@ -57,7 +68,7 @@ class botController extends Controller
                     $isActionPerformed = $this->performAction('REG', array('firstname' => strtolower($command_array[1]), 'surname' => strtolower($command_array[2]), 'phone' => $phone, 'user_type' => strtolower($command_array[3])));
                     if ($isActionPerformed)
                     {
-                        $message = "Your account has been created. Send show help to see the list of commands you can send.";
+                        $message = "Your account has been created. Send show help to see the list of messages you can send to start reading novels.";
                     }else
                     {
                         $message = "There was an error creating your account. We apologize for any inconvenience caused.";
@@ -77,10 +88,20 @@ class botController extends Controller
     {
         if ($isRegistered)
         {
-            $message = "";
+            $message = "To view all novels, please send the following command:\n";
+            $message += "SHOW NOVELS ALL \n";
+            $message += "To show your subscribed novels, please send the following command:\n";
+            $message += "In order to view all chapters of a certain novel, send the following command:\n";
+            $message += "SHOW {novel code} chapters \t";
+            $message += "for example, SHOW AX011 CHAPTERS\n";
+            $message += "To read a specific chapter, send the following command: \n";
+            $message += "SHOW {novel code} {chapter number} \t";
+            $message += "for example, SHOW AX011 1 \n";
+            $message += "NB: You can only read novels you have subscribed to!!!!! \n";
         }else
         {
-            $message = "";
+            $message = "To register for our services, send the following message: \n";
+            
         }
 
         return $message;
@@ -100,6 +121,10 @@ class botController extends Controller
                 $user->user_type = $params['user_type'];
                 $user-save();
                 $isActionPerformed = true;
+                break;
+            case "ADD":
+                break;
+            case "COMMENT": 
                 break;
             default:
                 $isActionPerformed = false;
