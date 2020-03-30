@@ -16,7 +16,8 @@ class botController extends Controller
 
         try {
             //$message = $this->decodeCommand($from, $body);
-            $message = "Your phone number is ".$from;
+            $phone_array = explode(':', $from);
+            $message = "Your phone number is ".$phone_array[1];
             $this->sendWhatsAppMessage($message, $from);
         } catch (Exception $error) {
           $message = "There was an error!";
