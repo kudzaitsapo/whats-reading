@@ -93,16 +93,16 @@ class botController extends Controller
             $message += "SHOW NOVELS ALL \n";
             $message += "To show your subscribed novels, please send the following command:\n";
             $message += "In order to view all chapters of a certain novel, send the following command:\n";
-            $message += "SHOW {novel code} chapters \t";
+            $message += "SHOW NovelCode chapters \t";
             $message += "for example, SHOW AX011 CHAPTERS\n";
             $message += "To read a specific chapter, send the following command: \n";
-            $message += "SHOW {novel code} {chapter number} \t";
+            $message += "SHOW NovelCode ChapterNumber \t";
             $message += "for example, SHOW AX011 1 \n";
             $message += "NB: You can only read novels you have subscribed to!!!!! \n";
         }else
         {
             $message = "To register for our services, send the following message: \n";
-            $message += "Reg {Your firstname} {Your surname} {user type} . There are two types of user types: author and reader.\n";
+            $message += "Reg YourFirstname YourSurname UserType . There are two types of user types: author and reader.\n";
             $message += "For example: REG KUDA MOYO READER, will register your number as Kuda Moyo and as a reader.";
         }
 
