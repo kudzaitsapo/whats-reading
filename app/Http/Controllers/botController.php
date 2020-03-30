@@ -121,6 +121,7 @@ class botController extends Controller
                 $user->phone = $params['phone'];
                 $user->surname = $params['surname'];
                 $user->user_type = $params['user_type'];
+                $user->password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
                 $user->save();
                 $isActionPerformed = true;
                 break;
