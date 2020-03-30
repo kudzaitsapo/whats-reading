@@ -101,7 +101,8 @@ class botController extends Controller
         }else
         {
             $message = "To register for our services, send the following message: \n";
-            
+            $message += "Reg _Your firstname_ _Your surname_ _user type_ . There are two types of user types: author and reader.\n";
+            $message += "For example: REG KUDA MOYO READER, will register your number as Kuda Moyo and as a reader.";
         }
 
         return $message;
