@@ -18,7 +18,6 @@ class botController extends Controller
             $message = $this->decodeCommand($from, $body);
             $this->sendWhatsAppMessage($message, $from);
         } catch (Exception $error) {
-            error_log($error->getMessage());
           $message = "There was an error!";
           $this->sendWhatsAppMessage($message, $from);
         }
@@ -87,6 +86,7 @@ class botController extends Controller
 
     public function getHelp(bool $isRegistered)
     {
+        $message = "";
         if ($isRegistered)
         {
             $message = "To view all novels, please send the following command:\n";
