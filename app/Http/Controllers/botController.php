@@ -121,7 +121,7 @@ class botController extends Controller
                 $user->phone = $params['phone'];
                 $user->surname = $params['surname'];
                 $user->user_type = $params['user_type'];
-                $user-save();
+                $user->save();
                 $isActionPerformed = true;
                 break;
             case "ADD":
